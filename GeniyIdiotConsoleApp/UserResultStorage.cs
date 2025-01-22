@@ -1,4 +1,6 @@
 ﻿
+using GeniyIdiot.Common;
+
 namespace GeniyIdiotConsoleApp
 {
     public class UserResultStorage
@@ -13,10 +15,10 @@ namespace GeniyIdiotConsoleApp
         {
             var value = FileProvider.GetValue("userResult.txt");
             var lines = value.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            var results = new List<User>(); 
-            
-            foreach(var line in lines)
-            { 
+            var results = new List<User>();
+
+            foreach (var line in lines)
+            {
                 var values = line.Split('#');
                 var name = values[0];
                 int rightAnswersCount = Convert.ToInt32(values[1]);
@@ -26,11 +28,11 @@ namespace GeniyIdiotConsoleApp
                 user.RightAnswersCount = rightAnswersCount;
                 user.Diagnoses = diagnoses;
 
-                results.Add(user);                
-            }           
+                results.Add(user);
+            }
             return results;
         }
-    }    
+    }
 }
 
 

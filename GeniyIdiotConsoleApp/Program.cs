@@ -1,10 +1,9 @@
 
-﻿using GeniyIdiot.Common;
+using GeniyIdiot.Common;
 
 namespace GeniyIdiotConsoleApp;
 
-internal class Program
-n
+public class Program
 {
     static void Main(string[] args)
     {
@@ -20,17 +19,17 @@ n
         while (true)
         {
 
-            while(! game.EndGame())
+            while (!game.EndGame())
 
 
-           
+
             {
                 var currentQuestion = game.ShowNextQuestion();
                 Console.WriteLine(game.GetQuestionNextNumber());
                 Console.WriteLine(currentQuestion.Text);
 
                 var userAnswers = GetNumber();
-                game.CompareUserAnswer(userAnswers);                
+                game.CompareUserAnswer(userAnswers);
             }
             var message = game.GetResultDiagnose();
             Console.WriteLine(message);
@@ -65,7 +64,7 @@ n
         var number = 0;
         while (!InputInspector.TryGetNumber(Console.ReadLine(), out number, out string errorMessage))
         {
-            Console.WriteLine(errorMessage);            
+            Console.WriteLine(errorMessage);
         }
         return number;
     }
@@ -182,7 +181,7 @@ n
         else
         {
             return false;
-        }        
+        }
     }
 }
 
