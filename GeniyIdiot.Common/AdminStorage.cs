@@ -1,16 +1,17 @@
 using Newtonsoft.Json;
-using System.Text;
 namespace GeniyIdiot.Common;
 
 public static class AdminStorage
 {
-    public static string Path = "password.json";   
+    public static string Path = "password.json";
+
     public static void SavePassword(Password password)
     {
         var value = GetPassword();
         value.Add(password);
         Save(value);
     }
+
     public static List<Password> GetPassword()
     {
         var passwords = new List<Password>();
@@ -24,8 +25,9 @@ public static class AdminStorage
             passwords.Add(new Password("345"));
             Save(passwords);
         }
-        return  passwords;               
+        return passwords;
     }
+
     public static void Save(List<Password> passwords)
     {
         var jsonData = JsonConvert.SerializeObject(passwords, Formatting.Indented);
