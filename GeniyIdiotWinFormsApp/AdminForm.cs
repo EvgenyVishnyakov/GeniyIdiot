@@ -5,20 +5,23 @@ namespace GeniyIdiotWinFormsApp
     public partial class AdminForm : Form
     {
         int amountChoice = 3;
-        public Password adminPassword;
-        
+        public Password adminPassword { get; set; }
+
         public AdminForm()
         {
-           InitializeComponent();
+            InitializeComponent();
         }
+
         private void ConformPasswordButton_MouseHover(object sender, EventArgs e)
         {
             ConformPasswordButton.BackColor = Color.Gray;
         }
+
         private void ConformPasswordButton_MouseLeave(object sender, EventArgs e)
         {
             ConformPasswordButton.BackColor = Color.LightGray;
         }
+
         public void ConformPasswordButton_Click(object sender, EventArgs e)
         {
             var input = Convert.ToString(UserPasswordTextBox.Text);
@@ -42,7 +45,7 @@ namespace GeniyIdiotWinFormsApp
                 MessageBox.Show("Вы не администратор");
                 this.Close();
             }
-        }       
+        }
     }
 }
 

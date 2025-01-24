@@ -5,32 +5,26 @@ public static class AdminStorage
 {
     public static string Path = "password.json";
 
-    public static void SavePassword(Password password)
+    public static Password GetPassword()
     {
-        var value = GetPassword();
-        value.Add(password);
-        Save(value);
-    }
-
-    public static List<Password> GetPassword()
-    {
-        var passwords = new List<Password>();
         if (FileProvider.Exists(Path))
         {
             string jsonData = FileProvider.GetValue(Path);
-            passwords = JsonConvert.DeserializeObject<List<Password>>(jsonData);
+            var adminPassword = JsonConvert.DeserializeObject<Password>(jsonData);
+            return adminPassword;
         }
         else
         {
-            passwords.Add(new Password("345"));
-            Save(passwords);
+            var adminPassword = new Password("345");
+            Save(adminPassword);
+            return adminPassword;
         }
-        return passwords;
+
     }
 
-    public static void Save(List<Password> passwords)
+    public static void Save(Password password)
     {
-        var jsonData = JsonConvert.SerializeObject(passwords, Formatting.Indented);
+        var jsonData = JsonConvert.SerializeObject(password, Formatting.Indented);
         FileProvider.Replace(Path, jsonData);
     }
 }

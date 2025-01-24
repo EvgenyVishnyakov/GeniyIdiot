@@ -1,8 +1,8 @@
 ﻿namespace GeniyIdiot.Common
 {
     public class InputInspector
-    {  
-        
+    {
+
         public static bool TryGetNumber(string input, out int number, out string errorMessage)
         {
             try
@@ -24,22 +24,14 @@
                 return false;
             }
         }
-        public static string GetNewPasswors()
-        {
-            var password = "";
-            var results = AdminStorage.GetPassword();
-            foreach (var passw in results)
-            {
-                password = passw.ToString();
-            }
-            return password;
-        }
+
         public static bool TryGetPassword(string input)
         {
-            //adminStorage = new AdminStorage();
-            var setPassword = GetNewPasswors();
+            var result = AdminStorage.GetPassword();
+            //var setPassword = GetNewPasswors();
             var userAdmin = Convert.ToString(input);
-            if (userAdmin == setPassword)
+
+            if (result.AdminPassword == input)
             {
                 return true;
             }
