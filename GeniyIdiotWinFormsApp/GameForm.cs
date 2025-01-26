@@ -1,36 +1,55 @@
 using GeniyIdiot.Common;
-// using Microsoft.VisualBasic.ApplicationServices;
-//using User = GeniyIdiotConsoleApp.User;
-
 
 namespace GeniyIdiotWinFormsApp;
 
 public partial class GameForm : Form
 {
-    public Game game;
-    public User user;
+    public Game Game { get; set; }
+    public User User { get; set; }
     Question currentQuestion;
+    private bool isTimeUp;
+
+    private System.Windows.Forms.Timer countdownTimer { get; set; }
+    private int secondsRemaining { get; set; }
+
     public GameForm()
     {
+        StartPosition = FormStartPosition.CenterScreen;
         InitializeComponent();
-        Timer.Start();
+        InitializeCountdownTimer();
     }
+
     private void questionTextLabel_Click(object sender, EventArgs e)
     {
     }
+
     private void MainForm_Load_1(object sender, EventArgs e)
     {
-        var s = Convert.ToInt32(10);
-
         ShowNextQuestion();
     }
+
+    private void InitializeCountdownTimer()
+    {
+        countdownTimer = new System.Windows.Forms.Timer();
+        countdownTimer.Interval = 1000;
+        countdownTimer.Tick += Timer_Tick;
+        secondsRemaining = 10;
+        isTimeUp = false;
+    }
+
     public void ShowNextQuestion()
     {
-        Timer.Start();
-        currentQuestion = game.ShowNextQuestion();
+        countdownTimer.Start();
+        progressBar.Value = progressBar.Maximum;
+        isTimeUp = false;
+        currentQuestion = Game.ShowNextQuestion();
         questionTextLabel.Text = currentQuestion.Text;
-        questionNumberLabel.Text = game.GetQuestionNextNumber();
+        questionNumberLabel.Text = Game.GetQuestionNextNumber();
+        secondsRemaining = 10;
+        label2.Text = secondsRemaining.ToString();
+
     }
+
     private void NextButton_Click(object sender, EventArgs e)
     {
         var gotNumber = InputInspector.TryGetNumber(userAnswerTextBox.Text, out int userAnswers, out string errorMessage);
@@ -40,43 +59,48 @@ public partial class GameForm : Form
         }
         else
         {
-            game.CompareUserAnswer(userAnswers);
-            userAnswerTextBox.Clear();
-            if (game.EndGame())
-            {
-                var message = game.GetResultDiagnose();
-                MessageBox.Show(message);
-                this.Close();
-                var choiceForm = new ChoiceForm();
-                choiceForm.ShowDialog();
-            }
-            else
-            {
-                ShowNextQuestion();
-            }
+            GetGame(userAnswers);
         }
-    } 
+    }
+
+    private void GetGame(int userAnswers)
+    {
+        Game.CompareUserAnswer(userAnswers);
+        userAnswerTextBox.Clear();
+        if (Game.EndGame())
+        {
+            var message = Game.GetResultDiagnose();
+            MessageBox.Show(message);
+            this.Close();
+            var choiceForm = new ChoiceForm();
+            choiceForm.ShowDialog();
+        }
+        else
+        {
+            ShowNextQuestion();
+        }
+    }
+
     public void Timer_Tick(object sender, EventArgs e)
     {
-        var h = Convert.ToInt32(0);
-        var m = Convert.ToInt32(0);
-        var s = Convert.ToInt32(10);
-        
-        label2.Text = Convert.ToString(s);
-        
-        s = s - 1;
-        if (s == -1)
+        if (secondsRemaining > 0)
         {
-            m = m - 1;
-            s = 59;
+            secondsRemaining--;
+            label2.Text = secondsRemaining.ToString();
+            progressBar.Value = (int)((double)secondsRemaining / 10 * progressBar.Maximum);
         }
-        if (h == 0 && m == 0 && s == 0)
+        else
         {
-            Timer.Stop();
-            MessageBox.Show("Время вышло!");
+            if (!isTimeUp)
+            {
+                countdownTimer.Stop();
+                isTimeUp = true;
+                MessageBox.Show("Время вышло!");
+                GetGame(-1);
+            }
         }
     }
 }
-    
-    
+
+
 

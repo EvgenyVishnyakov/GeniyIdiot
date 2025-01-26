@@ -39,15 +39,17 @@
             Timer = new System.Windows.Forms.Timer(components);
             TimerLabel = new Label();
             label2 = new Label();
+            progressBar = new ProgressBar();
             SuspendLayout();
             // 
             // nextButton
             // 
             nextButton.BackColor = SystemColors.ButtonHighlight;
             nextButton.Font = new Font("Cambria", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nextButton.Location = new Point(134, 256);
+            nextButton.Location = new Point(104, 183);
+            nextButton.Margin = new Padding(2);
             nextButton.Name = "nextButton";
-            nextButton.Size = new Size(672, 116);
+            nextButton.Size = new Size(523, 83);
             nextButton.TabIndex = 0;
             nextButton.Text = "Далее";
             nextButton.UseVisualStyleBackColor = false;
@@ -57,9 +59,10 @@
             // 
             questionNumberLabel.AutoSize = true;
             questionNumberLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            questionNumberLabel.Location = new Point(106, 65);
+            questionNumberLabel.Location = new Point(82, 46);
+            questionNumberLabel.Margin = new Padding(2, 0, 2, 0);
             questionNumberLabel.Name = "questionNumberLabel";
-            questionNumberLabel.Size = new Size(119, 23);
+            questionNumberLabel.Size = new Size(99, 19);
             questionNumberLabel.TabIndex = 1;
             questionNumberLabel.Text = "Вопрос № 1";
             // 
@@ -67,9 +70,10 @@
             // 
             questionTextLabel.AutoSize = true;
             questionTextLabel.Font = new Font("Cambria", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            questionTextLabel.Location = new Point(106, 130);
+            questionTextLabel.Location = new Point(82, 93);
+            questionTextLabel.Margin = new Padding(2, 0, 2, 0);
             questionTextLabel.Name = "questionTextLabel";
-            questionTextLabel.Size = new Size(140, 23);
+            questionTextLabel.Size = new Size(112, 19);
             questionTextLabel.TabIndex = 2;
             questionTextLabel.Text = "Текст вопроса";
             questionTextLabel.Click += questionTextLabel_Click;
@@ -77,9 +81,10 @@
             // userAnswerTextBox
             // 
             userAnswerTextBox.Font = new Font("Cambria", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            userAnswerTextBox.Location = new Point(284, 187);
+            userAnswerTextBox.Location = new Point(221, 134);
+            userAnswerTextBox.Margin = new Padding(2);
             userAnswerTextBox.Name = "userAnswerTextBox";
-            userAnswerTextBox.Size = new Size(338, 43);
+            userAnswerTextBox.Size = new Size(264, 36);
             userAnswerTextBox.TabIndex = 3;
             userAnswerTextBox.TextAlign = HorizontalAlignment.Center;
             // 
@@ -103,7 +108,8 @@
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(955, 24);
+            menuStrip1.Padding = new Padding(5, 1, 0, 1);
+            menuStrip1.Size = new Size(743, 24);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -117,26 +123,42 @@
             TimerLabel.AutoSize = true;
             TimerLabel.BackColor = Color.FromArgb(128, 255, 128);
             TimerLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TimerLabel.Location = new Point(557, 47);
+            TimerLabel.Location = new Point(433, 34);
+            TimerLabel.Margin = new Padding(2, 0, 2, 0);
             TimerLabel.Name = "TimerLabel";
-            TimerLabel.Size = new Size(174, 23);
+            TimerLabel.Size = new Size(142, 19);
             TimerLabel.TabIndex = 5;
             TimerLabel.Text = "Осталось секунд:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(754, 49);
+            label2.Font = new Font("Cambria", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(586, 32);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 21);
+            label2.Size = new Size(0, 26);
             label2.TabIndex = 6;
+            // 
+            // progressBar
+            // 
+            progressBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            progressBar.ForeColor = Color.DarkGreen;
+            progressBar.Location = new Point(106, 283);
+            progressBar.Name = "progressBar";
+            progressBar.RightToLeftLayout = false;
+            progressBar.Size = new Size(521, 10);
+            progressBar.Step = 5;
+            progressBar.TabIndex = 5;
             // 
             // GameForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 128);
-            ClientSize = new Size(955, 435);
+            ClientSize = new Size(743, 311);
+            Controls.Add(progressBar);
             Controls.Add(label2);
             Controls.Add(TimerLabel);
             Controls.Add(userAnswerTextBox);
@@ -145,6 +167,7 @@
             Controls.Add(nextButton);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(2);
             Name = "GameForm";
             Text = "Гений Идиот";
             Load += MainForm_Load_1;
@@ -165,5 +188,6 @@
         private System.Windows.Forms.Timer Timer;
         private Label TimerLabel;
         private Label label2;
+        private ProgressBar progressBar;
     }
 }

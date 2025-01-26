@@ -1,11 +1,10 @@
-﻿using GeniyIdiot.Common;
-
-namespace GeniyIdiotWinFormsApp;
+﻿namespace GeniyIdiotWinFormsApp;
 public partial class ChoiceForm : Form
-{    
+{
     public ChoiceForm()
     {
         InitializeComponent();
+        StartPosition = FormStartPosition.CenterScreen;
     }
     public void ChoiceForm_Load(object sender, EventArgs e)
     {
@@ -65,7 +64,7 @@ public partial class ChoiceForm : Form
     }
     private void GetAdminButton_Click(object sender, EventArgs e)
     {
-        AdminForm adminForm = new AdminForm();  
+        AdminForm adminForm = new AdminForm();
         adminForm.ShowDialog();
     }
 

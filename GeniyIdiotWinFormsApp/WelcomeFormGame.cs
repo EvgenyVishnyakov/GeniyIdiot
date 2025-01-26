@@ -8,11 +8,13 @@ namespace GeniyIdiotWinFormsApp
         public WelcomeFormGame()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
+
         private void StartUserButton_Click(object sender, EventArgs e)
         {
             var name = Convert.ToString(userNameTextBox.Text);
-            if (name == string.Empty)                
+            if (name == string.Empty)
             {
                 MessageBox.Show("Пожалуйста, обязательно введите свое имя! Попробуйте еще раз.");
             }
@@ -20,12 +22,11 @@ namespace GeniyIdiotWinFormsApp
             {
                 var user = new User(name);
                 GameForm gameForm = new GameForm();
-                gameForm.user = new User(name); ;
-                gameForm.game = new Game(user); 
+                gameForm.User = new User(name); ;
+                gameForm.Game = new Game(user);
                 gameForm.Show();
-                //var timer = gameForm.Timer.Start();
-                this.Close();
+                Close();
             }
-        }        
+        }
     }
 }
