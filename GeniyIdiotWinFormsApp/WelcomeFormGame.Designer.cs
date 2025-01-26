@@ -87,8 +87,7 @@
             Controls.Add(userNameTextBox);
             ForeColor = Color.Black;
             Name = "WelcomeFormGame";
-            Text = "Welcome To Game!";
-            //Load += welcomeFormGame_Load;
+            Text = "Welcome To Game!";            
             ResumeLayout(false);
             PerformLayout();
         }

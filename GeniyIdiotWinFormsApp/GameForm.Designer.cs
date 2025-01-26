@@ -54,6 +54,7 @@
             nextButton.Text = "Далее";
             nextButton.UseVisualStyleBackColor = false;
             nextButton.Click += NextButton_Click;
+            this.AcceptButton = nextButton;
             // 
             // questionNumberLabel
             // 
@@ -85,8 +86,8 @@
             userAnswerTextBox.Margin = new Padding(2);
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(264, 36);
-            userAnswerTextBox.TabIndex = 3;
-            userAnswerTextBox.TextAlign = HorizontalAlignment.Center;
+            userAnswerTextBox.TabIndex = 0;
+            userAnswerTextBox.TextAlign = HorizontalAlignment.Center;           
             // 
             // showResults
             // 
@@ -147,7 +148,6 @@
             progressBar.ForeColor = Color.DarkGreen;
             progressBar.Location = new Point(106, 283);
             progressBar.Name = "progressBar";
-            progressBar.RightToLeftLayout = false;
             progressBar.Size = new Size(521, 10);
             progressBar.Step = 5;
             progressBar.TabIndex = 5;
@@ -161,11 +161,11 @@
             Controls.Add(progressBar);
             Controls.Add(label2);
             Controls.Add(TimerLabel);
-            Controls.Add(userAnswerTextBox);
             Controls.Add(questionTextLabel);
             Controls.Add(questionNumberLabel);
             Controls.Add(nextButton);
             Controls.Add(menuStrip1);
+            Controls.Add(userAnswerTextBox);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
             Name = "GameForm";

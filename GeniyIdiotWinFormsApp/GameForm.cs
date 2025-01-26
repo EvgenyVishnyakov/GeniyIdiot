@@ -26,6 +26,8 @@ public partial class GameForm : Form
     private void MainForm_Load_1(object sender, EventArgs e)
     {
         ShowNextQuestion();
+        userAnswerTextBox.Focus();
+        userAnswerTextBox.Select(0, 0);
     }
 
     private void InitializeCountdownTimer()
@@ -47,7 +49,6 @@ public partial class GameForm : Form
         questionNumberLabel.Text = Game.GetQuestionNextNumber();
         secondsRemaining = 10;
         label2.Text = secondsRemaining.ToString();
-
     }
 
     private void NextButton_Click(object sender, EventArgs e)
@@ -69,6 +70,8 @@ public partial class GameForm : Form
         userAnswerTextBox.Clear();
         if (Game.EndGame())
         {
+            countdownTimer.Stop();
+            isTimeUp = true;
             var message = Game.GetResultDiagnose();
             MessageBox.Show(message);
             this.Close();
