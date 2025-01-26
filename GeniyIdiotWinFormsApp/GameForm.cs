@@ -26,8 +26,6 @@ public partial class GameForm : Form
     private void MainForm_Load_1(object sender, EventArgs e)
     {
         ShowNextQuestion();
-        userAnswerTextBox.Focus();
-        userAnswerTextBox.Select(0, 0);
     }
 
     private void InitializeCountdownTimer()
@@ -103,6 +101,12 @@ public partial class GameForm : Form
             }
         }
     }
+
+    private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        Application.Exit();
+    }
+
 }
 
 

@@ -54,7 +54,6 @@
             nextButton.Text = "Далее";
             nextButton.UseVisualStyleBackColor = false;
             nextButton.Click += NextButton_Click;
-            this.AcceptButton = nextButton;
             // 
             // questionNumberLabel
             // 
@@ -87,7 +86,7 @@
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(264, 36);
             userAnswerTextBox.TabIndex = 0;
-            userAnswerTextBox.TextAlign = HorizontalAlignment.Center;           
+            userAnswerTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // showResults
             // 
@@ -154,6 +153,7 @@
             // 
             // GameForm
             // 
+            AcceptButton = nextButton;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 128);
@@ -170,6 +170,7 @@
             Margin = new Padding(2);
             Name = "GameForm";
             Text = "Гений Идиот";
+            FormClosing += Form1_FormClosing;
             Load += MainForm_Load_1;
             ResumeLayout(false);
             PerformLayout();
