@@ -14,15 +14,11 @@ public class Program
         var game = new Game(user);
 
         ShowGameRules();
-
         Countdown(5);
+
         while (true)
         {
-
             while (!game.EndGame())
-
-
-
             {
                 var currentQuestion = game.ShowNextQuestion();
                 Console.WriteLine(game.GetQuestionNextNumber());
