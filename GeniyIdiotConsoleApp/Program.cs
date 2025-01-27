@@ -18,11 +18,17 @@ public class Program
 
         while (true)
         {
+
             while (!game.EndGame())
             {
+                var initialLeft = Console.CursorLeft;
+                var initialTop = Console.CursorTop;
                 var currentQuestion = game.ShowNextQuestion();
                 Console.WriteLine(game.GetQuestionNextNumber());
+
                 Console.WriteLine(currentQuestion.Text);
+                Console.SetCursorPosition(initialLeft, initialTop + 2);
+                Console.Write("Введите ответ: ");
 
                 var userAnswers = GetNumber();
                 game.CompareUserAnswer(userAnswers);
@@ -61,6 +67,10 @@ public class Program
         while (!InputInspector.TryGetNumber(Console.ReadLine(), out number, out string errorMessage))
         {
             Console.WriteLine(errorMessage);
+            var initialLeft = Console.CursorLeft;
+            var initialTop = Console.CursorTop;
+            Console.SetCursorPosition(initialLeft, initialTop);
+            Console.Write("Итак, Ваш ответ: ");
         }
         return number;
     }

@@ -13,7 +13,7 @@
             }
             catch (FormatException)
             {
-                errorMessage = "Введите цело число";
+                errorMessage = "Введите целое число";
                 number = 0;
                 return false;
             }
