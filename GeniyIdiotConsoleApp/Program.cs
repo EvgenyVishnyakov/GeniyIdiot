@@ -15,7 +15,7 @@ public class Program
 
         ShowGameRules();
 
-        Thread.Sleep((int)TimeSpan.FromSeconds(3).TotalMilliseconds);
+        Countdown(5);
         while (true)
         {
 
@@ -182,6 +182,22 @@ public class Program
         {
             return false;
         }
+    }
+
+    private static void Countdown(int seconds)
+    {
+        int initialLeft = Console.CursorLeft;
+        int initialTop = Console.CursorTop;
+
+        while (seconds > 0)
+        {
+            Console.SetCursorPosition(initialLeft, initialTop);
+            Console.Write($"Осталось {seconds} секунд... ");
+            Thread.Sleep(1000); // Пауза на 1 секунду
+            seconds--;
+        }
+        Console.SetCursorPosition(initialLeft, initialTop);
+        Console.WriteLine("Начинаем!          ");
     }
 }
 
