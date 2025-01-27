@@ -2,55 +2,60 @@
 
 public class Game
 {
-    public List<Question> questions;
-    public Question currentQuestion;
-    public User user;
+    public List<Question> questions { get; set; }
+    public Question currentQuestion { get; set; }
+    public User User { get; set; }
+
     int questionsCount;
     int questionNumber = 0;
 
     public Game(User user)
     {
-        this.user = user;
+        User = user;
         questions = QuestionStorage.GetAll();
         questionsCount = questions.Count;
     }
+
     public Question ShowNextQuestion()
     {
         var random = new Random();
-        var randomQuestionDef = random.Next(questions.Count);
-        currentQuestion = questions[randomQuestionDef];
+        var randomQuestion = random.Next(questions.Count);
+        currentQuestion = questions[randomQuestion];
 
         questionNumber++;
         return currentQuestion;
     }
+
     public void CompareUserAnswer(int userAnswers)
     {
         var rightAnswer = currentQuestion.Answer;
         if (userAnswers == rightAnswer)
         {
-            user.GetRightAnswer();
+            User.GetRightAnswer();
         }
         questions.Remove(currentQuestion);
     }
+
     public string GetQuestionNextNumber()
     {
         return "Вопрос №" + questionNumber;
     }
+
     public bool EndGame()
     {
         return questions.Count == 0;
     }
+
     public string GetResultDiagnose()
     {
-        var diagnose = DiagnoseCalculate.Calculate(user.RightAnswersCount, questionsCount);
-        user.Diagnoses = diagnose;
-        var value = $"{user.Name}, Вы: {user.Diagnoses}, количество правильных ответов: {user.RightAnswersCount}";
-        UserResultStorage.SaveUserResult(user);
+        var diagnose = DiagnoseCalculate.Calculate(User.RightAnswersCount, questionsCount);
+        User.Diagnoses = diagnose;
+        var value = $"{User.Name}, Вы: {User.Diagnoses}, количество правильных ответов: {User.RightAnswersCount}";
+        UserResultStorage.SaveUserResult(User);
         return value;
-    }    
+    }
 }
-      
 
-    
-  
-  
+
+
+

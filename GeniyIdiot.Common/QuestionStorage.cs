@@ -5,6 +5,7 @@ namespace GeniyIdiot.Common;
 public static class QuestionStorage
 {
     private static string Path = "questions.json";
+
     public static List<Question> GetAll()
     {
         var questions = new List<Question>();
@@ -24,17 +25,20 @@ public static class QuestionStorage
         }
         return questions;
     }
+
     private static void SaveQuestions(List<Question> questions)
     {
         var jsonData = JsonConvert.SerializeObject(questions);
         FileProvider.Replace(Path, jsonData);
     }
+
     public static void Add(Question newQuestion)
     {
         var questions = GetAll();
         questions.Add(newQuestion);
         SaveQuestions(questions);
     }
+
     public static void Remove(Question removeQuestion)
     {
         var questions = GetAll();

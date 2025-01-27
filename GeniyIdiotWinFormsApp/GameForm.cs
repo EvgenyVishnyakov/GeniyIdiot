@@ -6,11 +6,10 @@ public partial class GameForm : Form
 {
     public Game Game { get; set; }
     public User User { get; set; }
-    Question currentQuestion;
-    private bool isTimeUp;
-
+    private Question currentQuestion { get; set; }
     private System.Windows.Forms.Timer countdownTimer { get; set; }
     private int secondsRemaining { get; set; }
+    private bool isTimeUp;
 
     public GameForm()
     {
@@ -55,11 +54,10 @@ public partial class GameForm : Form
         if (!gotNumber)
         {
             MessageBox.Show(errorMessage);
+            return;
         }
-        else
-        {
-            GetGame(userAnswers);
-        }
+        GetGame(userAnswers);
+
     }
 
     private void GetGame(int userAnswers)
@@ -72,14 +70,14 @@ public partial class GameForm : Form
             isTimeUp = true;
             var message = Game.GetResultDiagnose();
             MessageBox.Show(message);
-            this.Close();
             var choiceForm = new ChoiceForm();
             choiceForm.ShowDialog();
+            Close();
+            return;
         }
-        else
-        {
-            ShowNextQuestion();
-        }
+
+        ShowNextQuestion();
+
     }
 
     public void Timer_Tick(object sender, EventArgs e)
@@ -89,16 +87,14 @@ public partial class GameForm : Form
             secondsRemaining--;
             label2.Text = secondsRemaining.ToString();
             progressBar.Value = (int)((double)secondsRemaining / 10 * progressBar.Maximum);
+            return;
         }
-        else
+        if (!isTimeUp)
         {
-            if (!isTimeUp)
-            {
-                countdownTimer.Stop();
-                isTimeUp = true;
-                MessageBox.Show("Время вышло!");
-                GetGame(-1);
-            }
+            countdownTimer.Stop();
+            isTimeUp = true;
+            MessageBox.Show("Время вышло!");
+            GetGame(-1);
         }
     }
 
@@ -106,7 +102,6 @@ public partial class GameForm : Form
     {
         Application.Exit();
     }
-
 }
 
 

@@ -4,8 +4,6 @@ namespace GeniyIdiotWinFormsApp
 {
     public partial class СhangePasswordForm : Form
     {
-
-        Password passwords;
         public СhangePasswordForm()
         {
             InitializeComponent();

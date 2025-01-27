@@ -1,44 +1,39 @@
-﻿namespace GeniyIdiot.Common
+﻿namespace GeniyIdiot.Common;
+
+public class InputInspector
 {
-    public class InputInspector
+    public static bool TryGetNumber(string input, out int number, out string errorMessage)
     {
-
-        public static bool TryGetNumber(string input, out int number, out string errorMessage)
+        try
         {
-            try
-            {
-                number = Convert.ToInt32(input);
-                errorMessage = "";
-                return true;
-            }
-            catch (FormatException)
-            {
-                errorMessage = "Введите целое число";
-                number = 0;
-                return false;
-            }
-            catch (OverflowException)
-            {
-                errorMessage = "Введите целое число не более 3 знаков";
-                number = 0;
-                return false;
-            }
+            number = Convert.ToInt32(input);
+            errorMessage = "";
+            return true;
+        }
+        catch (FormatException)
+        {
+            errorMessage = "Введите целое число";
+            number = 0;
+            return false;
+        }
+        catch (OverflowException)
+        {
+            errorMessage = "Введите целое число не более 3 знаков";
+            number = 0;
+            return false;
+        }
+    }
+
+    public static bool TryGetPassword(string input)
+    {
+        var result = AdminStorage.GetPassword();
+        var userAdmin = Convert.ToString(input);
+
+        if (result.AdminPassword == input)
+        {
+            return true;
         }
 
-        public static bool TryGetPassword(string input)
-        {
-            var result = AdminStorage.GetPassword();
-            //var setPassword = GetNewPasswors();
-            var userAdmin = Convert.ToString(input);
-
-            if (result.AdminPassword == input)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        return false;
     }
 }

@@ -1,23 +1,22 @@
-﻿using GeniyIdiot.Common;
-
-namespace GeniyIdiotWinFormsApp
+﻿namespace GeniyIdiotWinFormsApp
 {
     public partial class QuestionAnswerForm : Form
     {
-        public Password adminPassword;
-        public QuestionAnswerForm(Password adminPassword)
+        public QuestionAnswerForm()
         {
-            this.adminPassword = adminPassword;
             InitializeComponent();
         }
+
         private void ShowQuestionsButton_MouseHover(object sender, EventArgs e)
         {
             ShowQuestionsButton.BackColor = Color.Gray;
         }
+
         private void ShowQuestionsButton_MouseLeave(object sender, EventArgs e)
         {
             ShowQuestionsButton.BackColor = Color.LightGray;
         }
+
         private void ShowQuestionsButton_Click(object sender, EventArgs e)
         {
             var showQuestion = new ShowQuestion();
@@ -28,10 +27,12 @@ namespace GeniyIdiotWinFormsApp
         {
             AddQuestionButton.BackColor = Color.Gray;
         }
+
         private void AddQuestionButton_MouseLeave(object sender, EventArgs e)
         {
             AddQuestionButton.BackColor = Color.LightGray;
         }
+
         private void AddQuestionButton_Click(object sender, EventArgs e)
         {
             var addQuestionForm = new AddQuestionForm();
@@ -42,10 +43,12 @@ namespace GeniyIdiotWinFormsApp
         {
             RemoveQuestionButton.BackColor = Color.Gray;
         }
+
         private void RemoveQuestionButton_MouseLeave(object sender, EventArgs e)
         {
             RemoveQuestionButton.BackColor = Color.LightGray;
         }
+
         private void RemoveQuestionButton_Click(object sender, EventArgs e)
         {
             var removeQuestionForm = new RemoveQuestionForm();
@@ -56,10 +59,12 @@ namespace GeniyIdiotWinFormsApp
         {
             changePasswordButton.BackColor = Color.Gray;
         }
+
         private void changePasswordButton_MouseLeave(object sender, EventArgs e)
         {
             changePasswordButton.BackColor = Color.LightGray;
         }
+
         private void changePasswordButton_Click(object sender, EventArgs e)
         {
             СhangePasswordForm changePasswordForm = new СhangePasswordForm();

@@ -6,17 +6,21 @@ public partial class ChoiceForm : Form
         InitializeComponent();
         StartPosition = FormStartPosition.CenterScreen;
     }
+
     public void ChoiceForm_Load(object sender, EventArgs e)
     {
     }
+
     private void ShowRulesButton_MouseHover(object sender, EventArgs e)
     {
         ShowRulesButton.BackColor = Color.Gray;
     }
+
     private void ShowRulesButton_MouseLeave(object sender, EventArgs e)
     {
         ShowRulesButton.BackColor = Color.LightGray;
     }
+
     private void ShowRulesButton_Click(object sender, EventArgs e)
     {
         MessageBox.Show($"Это шуточный тест! Не воспринимайте его буквально!" +

@@ -35,15 +35,15 @@ namespace GeniyIdiotWinFormsApp
             else if (confirmAdmin && amountChoice >= 1)
             {
                 MessageBox.Show("Введен верный пароль.Доступ открыт.");
-                var questionsAnswers = new QuestionAnswerForm(adminPassword);
+                var questionsAnswers = new QuestionAnswerForm();
                 questionsAnswers.ShowDialog();
                 UserPasswordTextBox.Enabled = false;
-                this.Close();
+                Close();
             }
             else
             {
                 MessageBox.Show("Вы не администратор");
-                this.Close();
+                Close();
             }
         }
     }
