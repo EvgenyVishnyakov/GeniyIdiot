@@ -167,6 +167,7 @@
             Controls.Add(menuStrip1);
             Controls.Add(userAnswerTextBox);
             MainMenuStrip = menuStrip1;
+            ActiveControl = userAnswerTextBox;
             Margin = new Padding(2);
             Name = "GameForm";
             Text = "Гений Идиот";
