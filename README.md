@@ -1,1 +1,1 @@
-<div align="center" font-size: 15F>Шуточная игра Гений/Идиот</div>
+<div align="center"><h3>Шуточная игра Гений/Идиот</h3></div>
