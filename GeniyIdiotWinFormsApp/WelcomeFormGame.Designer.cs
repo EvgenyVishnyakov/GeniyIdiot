@@ -77,6 +77,7 @@
             // 
             // WelcomeFormGame
             // 
+            AcceptButton = userStartButton;
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 128);
