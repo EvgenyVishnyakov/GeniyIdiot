@@ -63,10 +63,3 @@
 <div class="text" align="center">
     <h1>Спасибо за внимание!</h2>
 </div>
-
-
-
- 
-
-https://github.com/user-attachments/assets/d20e4a77-47db-4a6b-b80a-0049d21bfd77
-
