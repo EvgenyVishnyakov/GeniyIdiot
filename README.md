@@ -3,11 +3,9 @@
 </div>
 <h3>Краткое объяснение</h3>
 <p><em>Шуточная</em> игра для непринужденного время препровождения как одному так и в компании друзей </p>
+<img src="https://github.com/user-attachments/assets/e5aadd0f-7b7c-4cae-a08e-8dac408a44b7" />
 <h3>Правила игры</h3>
-<p>Это шуточный тест! Не воспринимайте его буквально!</p>
-<p>Обратите внимание, что для ответа на вопросы требуется вводить числовое выражение!</p>
-<p>На каждый ответ Вам дается 10 секунд! Если не успеваете ответить - ответ не засчитывается!</p>
-<p>Для начала игры нажмите кнопку: Начать играть!</p>
+<img src="https://github.com/user-attachments/assets/8e937d5e-cf31-42c4-85e1-fb5a768d6b19" />
 <br />
 <p>По итогам игры участник игры получает <b>"шуточный"</b> итог игры, над которым все могут посмеяться</p>
 <p>Взяв на себя функции администратора пользователь может изменять и дополнять вопросы для изменения игры</p>
@@ -23,5 +21,26 @@
     <li>Возможность расширения списка вопросов и ответов для разнообразия игры</li>
 </ul>
 <h5>Особенно хотел бы отметить код для сохрарения в формате JSON</h5>
+public class FileProvider
+{
+    public static void Write(string Path, string value)
+    {
+        var writer = new StreamWriter(Path, false, Encoding.UTF8);
+        writer.WriteLine(value);
+        writer.Close();
+    }
 
+    public static string GetValue(string Path)
+    {
+        var reader = new StreamReader(Path, Encoding.UTF8);
+        var value = reader.ReadToEnd();
+        reader.Close();
+        return value;
+    }
+
+    public static bool Exists(string Path)
+    {
+        return File.Exists(Path);
+    }
+}
 
