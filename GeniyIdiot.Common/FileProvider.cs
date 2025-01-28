@@ -4,7 +4,14 @@ namespace GeniyIdiot.Common;
 
 public class FileProvider
 {
-    public static void Write(string Path, string value)
+    public static void Append(string Path, string value)
+    {
+        var writer = new StreamWriter(Path, true, Encoding.UTF8);
+        writer.WriteLine(value);
+        writer.Close();
+    }
+
+    public static void Replace(string Path, string value)
     {
         var writer = new StreamWriter(Path, false, Encoding.UTF8);
         writer.WriteLine(value);

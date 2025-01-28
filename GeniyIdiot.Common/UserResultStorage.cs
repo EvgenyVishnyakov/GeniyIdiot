@@ -27,7 +27,7 @@ public static class UserResultStorage
     static void Save(List<User> UserResult)
     {
         var jsonData = JsonConvert.SerializeObject(UserResult, Formatting.Indented);
-        FileProvider.Write(Path, jsonData);
+        FileProvider.Append(Path, jsonData);
     }
 }
 
