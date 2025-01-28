@@ -25,7 +25,7 @@ public static class AdminStorage
     public static void Save(Password password)
     {
         var jsonData = JsonConvert.SerializeObject(password, Formatting.Indented);
-        FileProvider.Replace(Path, jsonData);
+        FileProvider.Write(Path, jsonData);
     }
 }
 
