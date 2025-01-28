@@ -29,7 +29,7 @@ public static class QuestionStorage
     private static void SaveQuestions(List<Question> questions)
     {
         var jsonData = JsonConvert.SerializeObject(questions);
-        FileProvider.Append(Path, jsonData);
+        FileProvider.Replace(Path, jsonData);
     }
 
     public static void Add(Question newQuestion)

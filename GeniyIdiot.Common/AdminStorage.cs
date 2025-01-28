@@ -19,11 +19,13 @@ public static class AdminStorage
             Save(adminPassword);
             return adminPassword;
         }
+
     }
 
     public static void Save(Password password)
     {
-        FileProvider.Save(Path, password);
+        var jsonData = JsonConvert.SerializeObject(password, Formatting.Indented);
+        FileProvider.Replace(Path, jsonData);
     }
 }
 
